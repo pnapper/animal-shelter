@@ -79,6 +79,19 @@ class Program
       bool boolAdopted = name.Adopted;
       name.IsAdopted(stringName, boolAdopted);
     }
+    Console.WriteLine("Which Animal would you like to Adopt?");
+    string animalToAdopt = Console.ReadLine();
+    foreach (Animal name in Animals)
+    {
+      if(name.Name == animalToAdopt && name.Adopted == false)
+      {
+      name.Adopted = true;
+      Console.WriteLine("Congrats! You have adopted " +name.Name);
+      bool adoptionStatus = name.Adopted;
+      Console.WriteLine("Adopted? "+adoptionStatus);
+      } else if (name.Name == animalToAdopt && name.Adopted == true)
+      Console.WriteLine("Sorry, "+name.Name+" is not available.");
+    }
   }
 
 }
