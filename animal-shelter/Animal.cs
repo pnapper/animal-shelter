@@ -3,27 +3,56 @@ using System.Collections.Generic;
 
 public class Animal
 {
+  public string Name;
   public int Age;
   public string Species;
+  public bool Adopted;
+
+  public void IsACat(string stringSpecies)
+  {
+    if(stringSpecies == "Cat")
+    {
+      Console.WriteLine("Animal is a Cat");
+    } else {
+      Console.WriteLine("Animal is not a cat");
+    }
+  }
+
+  public void IsAdopted(string stringName, bool boolAdopted)
+  {
+    if(boolAdopted == false) {
+      Console.WriteLine(stringName+" is available.");
+    }
+  }
 }
+
 
 class Program
 {
   public static void Main()
   {
-    Animal DogOne = new Animal();
-    DogOne.Age = 3;
-    DogOne.Species = "Labrador";
+    Animal Labrador = new Animal();
+    Labrador.Name = "Labrador";
+    Labrador.Age = 3;
+    Labrador.Species = "Dog";
+    Labrador.Adopted = false;
 
-    Animal DogTwo = new Animal();
-    DogTwo.Age = 4;
-    DogTwo.Species = "Poodle";
 
-    Animal DogThree = new Animal();
-    DogThree.Age = 1;
-    DogThree.Species = "American Bulldog";
+    Animal Poodle = new Animal();
+    Poodle.Name = "Poodle";
+    Poodle.Age = 4;
+    Poodle.Species = "Dog";
+    Poodle.Adopted = true;
 
-    List<Animal> Animals = new List<Animal>() {DogOne, DogTwo, DogThree};
+
+    Animal Bulldog = new Animal();
+    Bulldog.Name = "Bulldog";
+    Bulldog.Age = 1;
+    Bulldog.Species = "Dog";
+    Bulldog.Adopted = false;
+
+
+    List<Animal> Animals = new List<Animal>() {Labrador, Poodle, Bulldog};
     foreach(Animal name in Animals)
     {
       Console.WriteLine("Species:"+name.Species);
@@ -38,7 +67,17 @@ class Program
       {
         Console.WriteLine("Species:"+name.Species);
         Console.WriteLine("Age:"+name.Age);
+        string stringSpecies = name.Species;
+
+        name.IsACat(stringSpecies);
       }
+    }
+    Console.WriteLine("Animals Available:");
+    foreach (Animal name in Animals)
+    {
+      string stringName = name.Name;
+      bool boolAdopted = name.Adopted;
+      name.IsAdopted(stringName, boolAdopted);
     }
   }
 
